@@ -1,7 +1,7 @@
 # CMD AUTONOMO
 🎈INICIE E REINICIE SEU SCRIPT.PY.
 
-<img src="FOTO.png" align="center" width="400"> <br>
+<img src="IMAGEM.png" align="center" width="400"> <br>
 
 ## DESCRIÇÃO:
 O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica utilizando a biblioteca Tkinter. Seu propósito principal é permitir que os usuários executem comandos e scripts Python de forma simples e intuitiva, diretamente de uma interface gráfica.

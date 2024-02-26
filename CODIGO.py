@@ -1,5 +1,7 @@
 import tkinter as tk
 import subprocess
+from time import sleep
+import psutil
 
 class App:
     def __init__(self, root):
@@ -46,7 +48,12 @@ class App:
         
         self.button_restart = tk.Button(self.frame_buttons, text="REINICIAR", command=self.restart_execution)
         self.button_restart.pack(side=tk.LEFT, padx=5)
-        self.button_restart.config(state="disabled")  
+        self.button_restart.config(state="disabled")
+        
+        self.button_stop = tk.Button(self.frame_buttons, text="PARAR", command=self.stop_execution)
+        self.button_stop.pack(side=tk.LEFT, padx=5)
+        self.button_stop.config(state="disabled")  
+        
         self.process = None
         
     def check_fields(self, event):
@@ -70,18 +77,36 @@ class App:
             self.entry_path.config(state="disabled")
             self.entry_file.config(state="disabled")
             self.button_restart.config(state="active")
+            self.button_stop.config(state="active")
             self.button_start.config(state="disabled")
         except Exception as e:
             self.status_var.set(f"ERRO: {e}")
         
     def restart_execution(self):
-        self.status_var.set("REINICIANDO...")
-        self.root.after(1000, self.restart_execution_delayed)
-        
-    def restart_execution_delayed(self):
-        if self.process is not None:
-            self.process.kill()
+        try:
+            self.status_var.set("REINICIANDO...")
+            self.root.update() 
+            sleep(1)
+            self.stop_execution()
             self.start_execution()
+        except Exception as e:
+            self.status_var.set(f"ERRO: {e}")
+            
+    def stop_execution(self):
+        try:
+            if self.process is not None:
+                parent = psutil.Process(self.process.pid)
+                for child in parent.children(recursive=True):
+                    child.kill()
+                parent.kill()
+                self.status_var.set("PARADO")
+                self.entry_path.config(state="normal")
+                self.entry_file.config(state="normal")
+                self.button_restart.config(state="disabled")
+                self.button_stop.config(state="disabled")
+                self.button_start.config(state="active")
+        except Exception as e:
+            self.status_var.set(f"ERRO: {e}")
 
 root = tk.Tk()
 app = App(root)
