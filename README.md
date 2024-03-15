@@ -20,10 +20,9 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    - Quando ambos os campos estão preenchidos, o botão "INICIAR" é habilitado, permitindo ao usuário iniciar a execução do script.
    - O botão "LIMPAR" é habilitado quando ambos os campos estão preenchidos, permitindo ao usuário limpar os campos de entrada.
 2. **Botões de controle**:
-   - O botão "INICIAR" inicia a execução do script Python, desabilitando os campos de entrada e habilitando os botões "REINICIAR", "PARAR" e "LIMPAR".
+   - O botão "INICIAR" inicia a execução do script Python, desabilitando os campos de entrada e habilitando os botões "REINICIAR" e "PARAR".
    - O botão "REINICIAR" reinicia a execução do script Python, mantendo os campos de entrada inalterados.
-   - O botão "PARAR" interrompe a execução do script Python em andamento, habilitando novamente os campos de entrada e desabilitando os botões "REINICIAR", "PARAR" e "LIMPAR".
-   - O botão "LIMPAR" limpa os campos de entrada "CAMINHO" e "ARQUIVO", desabilitando-o novamente.
+   - O botão "PARAR" interrompe a execução do script Python em andamento, habilitando novamente os campos de entrada e desabilitando os botões "REINICIAR" e "PARAR". Habilitando novamento o botão "LIMPAR".
 
 ## PORQUE CRIEI ESSE APP?
 - O aplicativo CMD AUTÔNOMO foi desenvolvido para simplificar a execução de bots Python diretamente pelo console, inspirado no conceito do "nodemon", eliminando a necessidade de reinicialização manual após modificações no código.
