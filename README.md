@@ -49,8 +49,17 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 * **BOTÃO `PARAR:`** Quando clicado, apenas interrompe a execução do script Python. 
 * **BOTÃO `LIMPAR:`** Ao ser clicado, o botão "LIMPAR" tem a função de limpar todos os campos de entrada, fornecendo uma maneira rápida e conveniente de remover dados inseridos anteriormente. É importante observar que essa ação não afeta os dados salvos no arquivo "CONFIG.json", garantindo a preservação das configurações previamente inseridas.
 
-## SAIBA MAIS:
+## SOBRE O EXECUTAVEL:
+- Este arquivo executável está disponível apenas para `Windows X64`. Para executá-lo, basta dar dois cliques. O executável é bastante útil caso o Python não esteja instalado. Trata-se da mesma aplicação do arquivo `CODIGO.py`. Se desejar, você pode recompilá-lo novamente; é para isso que forneci o arquivo `imagem.ico`.
+
+## NÃO SABE?
+- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
+* [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
+* [CURSO DE TKINTER](https://github.com/VILHALVA/CURSO-DE-TKINTER)
+* [CURSO DE EXE](https://github.com/VILHALVA/CURSO-DE-EXE)
+* [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
+
+## CREDITOS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
-- [FAÇA OS NOSSOS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 
 
