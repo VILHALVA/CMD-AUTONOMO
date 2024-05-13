@@ -50,21 +50,38 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 * **BOTÃO `LIMPAR:`** Ao ser clicado, o botão "LIMPAR" tem a função de limpar todos os campos de entrada, fornecendo uma maneira rápida e conveniente de remover dados inseridos anteriormente. É importante observar que essa ação não afeta os dados salvos no arquivo "CONFIG.json", garantindo a preservação das configurações previamente inseridas.
 
 ## SOBRE O EXECUTAVEL:
-- Este arquivo executável está disponível apenas para `Windows X64`. Para executá-lo, basta dar dois cliques. O executável é bastante útil caso o Python não esteja instalado. Trata-se da mesma aplicação do arquivo `CODIGO.py`. Se desejar, você pode recompilá-lo novamente; é para isso que forneci o arquivo `imagem.ico`.
+### 1. EXECUTANDO:
+   - Este arquivo executável está disponível apenas para `Windows X64`. Para executá-lo, basta dar dois cliques. O executável é bastante útil caso o Python não esteja instalado. Trata-se da mesma aplicação do arquivo `CODIGO.py`. Se desejar, você pode recompilá-lo novamente; é para isso que forneci o arquivo `imagem.ico`.
 
-- É importante explicar que ao executar o arquivo executável deste programa, é possível que o antivírus dispare um alerta de segurança. Isso ocorre porque o programa executa comandos do sistema operacional e pode abrir outros aplicativos ou acessar a rede.
+   - É importante explicar que ao executar o arquivo executável deste programa, é possível que o antivírus dispare um alerta de segurança. Isso ocorre porque o programa executa comandos do sistema operacional e pode abrir outros aplicativos ou acessar a rede.
 
-    * Para lidar com isso, há 2 alternativas:
+    **Para lidar com isso, há 2 alternativas:**
 
     1. **Adicionar exceção ao antivírus:** Você pode optar por adicionar uma exceção ao antivírus para permitir que o programa execute comandos do sistema sem disparar alertas. Isso geralmente pode ser feito acessando as configurações do antivírus e adicionando o arquivo executável do programa à lista de exceções.
 
     2. **Executar apenas o `CODIGO.py`:** Uma alternativa é optar por executar apenas o arquivo de código-fonte Python (`CODIGO.py`). Isso evita que o antivírus dispare alertas, já que você e o sistema podem inspecionar o código fonte diretamente.
 
+### 2. GERANDO:
+   **1. Instalação do PyInstaller:**
+   - Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
+   ```bash
+   pip install pyinstaller
+   ```
+
+   **2. Gerando o Executável:**
+   - Para gerar o executável, utilize o comando `pyinstaller` seguido de opções:
+      - `--icon="imagem.ico"`: Especifica o ícone do executável.
+      - `-w`: Especifica que o executável será do tipo "windowed", ou seja, sem exibir uma janela de console.
+      - `-F`: Gera um único arquivo executável em vez de vários.
+      - `CODIGO.py`: Substitua "CODIGO.py" pelo nome do seu arquivo Python principal.
+   ```bash
+   pyinstaller --icon="imagem.ico" -w -F CODIGO.py
+   ```
+
 ## NÃO SABE?
 - Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
 * [CURSO DE TKINTER](https://github.com/VILHALVA/CURSO-DE-TKINTER)
-* [CURSO DE EXE](https://github.com/VILHALVA/CURSO-DE-EXE)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 
 ## CREDITOS:
