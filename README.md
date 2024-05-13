@@ -62,7 +62,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    2. **Executar apenas o `CODIGO.py`:** Uma alternativa é optar por executar apenas o arquivo de código-fonte Python (`CODIGO.py`). Isso evita que o antivírus dispare alertas, já que você e o sistema podem inspecionar o código fonte diretamente.
 
 ### 2. GERANDO:
-   **1. Instalação do PyInstaller:**
+   **1. Instalação do [PyInstaller:](https://pyinstaller.org/en/stable/)**
    - Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
    ```bash
    pip install pyinstaller
