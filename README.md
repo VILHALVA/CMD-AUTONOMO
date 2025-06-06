@@ -85,7 +85,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 1. **Download**: Baixe o Inno Setup do site oficial: [Inno Setup](http://www.jrsoftware.org/isdl.php).
 2. **Instalação**: Siga o assistente de instalação para instalar o Inno Setup no seu sistema.
 
-#### PASSO 2: CRIAR O SCRIPT DO INSTALADOR:
+#### PASSO 2: CRIAR O INSTALADOR:
 1. **Editar o arquivo do instalador**
    No diretório `./CODIGO`, abra o arquivo `INSTALADOR.iss` e atualize os seguintes trechos:
 
@@ -115,7 +115,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
      ./CODIGO/dist/CMD AUTONOMO.exe
      ```
 
-**4. Instalando o Aplicativo:**
+4. **Instalando o Aplicativo:**
    * Execute o instalador gerado, localizado em:
 
    ```
