@@ -115,14 +115,18 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
      ./CODIGO/dist/CMD AUTONOMO.exe
      ```
 
-4. **Instalar o aplicativo:**
-   * Execute o instalador gerado.
-   * O aplicativo será instalado (por padrão, em `C:\Program Files\...`).
-   * Após a instalação, o aplicativo poderá ser executado diretamente pelo arquivo:
+**4. Instalando o Aplicativo:**
+   * Execute o instalador gerado, localizado em:
 
-     ```
-     APP/CMD AUTONOMO.exe
-     ```
+   ```
+   ./APP/CMD AUTONOMO.exe
+   ```
+
+   * O assistente de instalação será iniciado e, por padrão, o aplicativo será instalado em:
+
+   ```
+   C:\Program Files\CMD AUTONOMO
+   ```
 
 ## NÃO SABE?
 - Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
