@@ -40,14 +40,25 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 3. **Suporte de Linguagem**:
    - Atualmente, o aplicativo suporta apenas a execução de scripts Python e não oferece suporte para outras linguagens de programação.
 
-## USANDO O APP:
-- Para utilizar o CMD AUTÔNOMO, basta fornecer o caminho do arquivo e o nome do script Python que deseja executar. Após preencher esses campos, clique no botão "INICIAR" para iniciar a execução. Se você fizer alguma alteração no seu código, basta clicar em "REINICIAR" para atualizar seu projeto com as novas modificações:
-* **LABEL `CAMINHO`:** É um campo de entrada onde você deve inserir o caminho do diretório onde está o script Python.
-* **LABEL `ARQUIVO`:** É um campo de entrada onde você deve inserir o nome do arquivo Python.
-* **BOTÃO `INICIAR:`** Quando clicado, inicia a execução do script Python especificado.
-* **BOTÃO `REINICIAR:`** Quando clicado, reinicia a execução do script Python. Isso primeiro para o processo em execução e então inicia novamente.
-* **BOTÃO `PARAR:`** Quando clicado, apenas interrompe a execução do script Python. 
-* **BOTÃO `LIMPAR:`** Ao ser clicado, o botão "LIMPAR" tem a função de limpar todos os campos de entrada, fornecendo uma maneira rápida e conveniente de remover dados inseridos anteriormente. É importante observar que essa ação não afeta os dados salvos no arquivo "CONFIG.json", garantindo a preservação das configurações previamente inseridas.
+## COMO USAR O APLICATIVO?
+1. **Executando o Aplicativo:**
+   Navegue até o diretório `./CODIGO` e execute o script com o comando:
+
+   ```bash
+   python CODIGO.py
+   ```
+
+2. **Interface e Funcionalidades:**
+   Após abrir o aplicativo, utilize os seguintes recursos:
+
+   * **Botão `INICIAR`:** Inicia a execução do script Python especificado nos campos de entrada.
+   * **Botão `REINICIAR`:** Interrompe o script atual e o executa novamente. Use este botão sempre que fizer alterações no código.
+   * **Botão `PARAR`:** Encerra a execução do script sem reiniciá-lo.
+   * **Botão `LIMPAR`:** Limpa todos os campos de entrada, permitindo recomeçar rapidamente. Importante: esta ação **não afeta** os dados salvos no arquivo `CONFIG.json`.
+
+3. **Campos de Entrada:**
+   * **Campo `CAMINHO`:** Informe o diretório onde está localizado o script Python.
+   * **Campo `ARQUIVO`:** Informe o nome do arquivo Python que será executado.
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO:
