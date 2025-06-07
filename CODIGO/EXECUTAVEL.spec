@@ -19,7 +19,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='EXECUTAVEL',
+    name='CMD AUTONOMO',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
