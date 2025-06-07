@@ -73,7 +73,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    2. **Executar apenas o `./CODIGO/CODIGO.py`:** Uma alternativa é optar por executar apenas o arquivo de código-fonte Python (`CODIGO.py`). Isso evita que o antivírus dispare alertas, já que você e o sistema podem inspecionar o código fonte diretamente.
 
 ### 2. GERANDO O EXECUTAVEL:
-> **IMPORTANTE:** Antes de criar o instalador, é necessário gerar o arquivo `EXECUTAVEL.exe`. Para isso, siga os passos abaixo:
+> **IMPORTANTE:** Antes de criar o instalador, é necessário gerar o arquivo `CMD AUTONOMO.exe`. Para isso, siga os passos abaixo:
 
    **1. Instalação do PyInstaller:**
    * Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
@@ -88,7 +88,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    pyinstaller EXECUTAVEL.spec
    ```
 
-   * O executável `EXECUTAVEL.exe` será criado na pasta `./CODIGO/dist`.
+   * O executável `CMD AUTONOMO.exe` será criado na pasta `./CODIGO/dist`.
    * Após a geração, você pode excluir a pasta `./CODIGO/build`.
 
 ### 3. GERANDO O INSTALADOR:
@@ -129,11 +129,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    * Clique em **"Compile"** para gerar o instalador.
 
 3. **Limpar arquivos temporários:**
-   * Após a criação do instalador, você pode excluir o executável temporário:
-
-     ```
-     ./CODIGO/dist/EXECUTAVEL.exe
-     ```
+   * Após a criação do instalador, você pode excluir o executável temporário: `./CODIGO/dist/CMD AUTONOMO.exe`.
 
 4. **Instalando o Aplicativo:**
    * Se o `Aplicativo` não iniciar automaticamente a instalação, você pode executar manualmente o arquivo `./APP/CMD AUTONOMO.exe` clicando duas vezes sobre ele.
