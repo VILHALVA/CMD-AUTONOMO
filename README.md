@@ -61,7 +61,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    * **Campo `ARQUIVO`:** Informe o nome do arquivo Python que será executado.
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
-### 1. EXECUTANDO:
+### 1. EXECUTANDO O INSTALADOR:
    * O instalador está disponível  em `./APP`. Para instala-lo, basta dar dois cliques e seguir as orientações na tela. 
 
    * É importante explicar que ao executar o arquivo executável deste programa, é possível que o antivírus dispare um alerta de segurança. Isso ocorre porque o programa executa comandos do sistema operacional e pode abrir outros aplicativos ou acessar a rede.
@@ -73,6 +73,8 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    2. **Executar apenas o `./CODIGO/CODIGO.py`:** Uma alternativa é optar por executar apenas o arquivo de código-fonte Python (`CODIGO.py`). Isso evita que o antivírus dispare alertas, já que você e o sistema podem inspecionar o código fonte diretamente.
 
 ### 2. GERANDO O EXECUTAVEL:
+> **IMPORTANTE:** Antes de criar o instalador, é necessário gerar o arquivo `EXECUTAVEL.exe`. Para isso, siga os passos abaixo:
+
    **1. Instalação do PyInstaller:**
    * Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
    ```bash
@@ -86,7 +88,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    pyinstaller EXECUTAVEL.spec
    ```
 
-   * O executável `CMD AUTONOMO.exe` será criado na pasta `./CODIGO/dist`.
+   * O executável `EXECUTAVEL.exe` será criado na pasta `./CODIGO/dist`.
    * Após a geração, você pode excluir a pasta `./CODIGO/build`.
 
 ### 3. GERANDO O INSTALADOR:
@@ -95,8 +97,17 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 2. **Instalação**: Siga o assistente de instalação para instalar o Inno Setup no seu sistema.
 
 #### PASSO 2: CRIAR O INSTALADOR:
+> **IMPORTANTE:** Antes de criar o novo instalador, certifique-se de excluir o arquivo `./APP/CMD AUTONOMO.exe`.
+
 1. **Editar o arquivo do instalador**
    No diretório `./CODIGO`, abra o arquivo `INSTALADOR.iss` e atualize os seguintes trechos:
+
+   * **Versão do Aplicativo:**
+      Atualize o valor da linha `MyAppVersion` com a nova versão do aplicativo.Exemplo:
+
+      ```ini
+      #define MyAppVersion "1.3"
+      ```
 
    * **Ícone do instalador:**
      Substitua o caminho atual da linha `SetupIconFile=` pelo caminho correto do seu ícone:
@@ -121,31 +132,20 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    * Após a criação do instalador, você pode excluir o executável temporário:
 
      ```
-     ./CODIGO/dist/CMD AUTONOMO.exe
+     ./CODIGO/dist/EXECUTAVEL.exe
      ```
 
 4. **Instalando o Aplicativo:**
-   * Execute o instalador gerado, localizado em:
-
-   ```
-   ./APP/CMD AUTONOMO.exe
-   ```
-
-   * O assistente de instalação será iniciado e, por padrão, o aplicativo será instalado em:
-
-   ```
-   C:\Program Files\CMD AUTONOMO
-   ```
-
-## SUBSÍDIOS:
-* [DOCUMENTAÇÃO OFICIAL DO PYINSTALLER](https://pyinstaller.org/en/stable/)
-* [DOCUMENTAÇÃO OFICIAL DO INNO SETUP](http://www.jrsoftware.org/isinfo.php)
+   * Se o `Aplicativo` não iniciar automaticamente a instalação, você pode executar manualmente o arquivo `./APP/CMD AUTONOMO.exe` clicando duas vezes sobre ele.
+   * O assistente de instalação será iniciado e, por padrão, o aplicativo será instalado no seguinte caminho: `C:\Program Files\CMD AUTONOMO`.
 
 ## NÃO SABE?
-- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
+- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos e alguns subsídios:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
 * [CURSO DE TKINTER](https://github.com/VILHALVA/CURSO-DE-TKINTER)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
+* [DOCUMENTAÇÃO OFICIAL DO PYINSTALLER](https://pyinstaller.org/en/stable/)
+* [DOCUMENTAÇÃO OFICIAL DO INNO SETUP](http://www.jrsoftware.org/isinfo.php)
 
 ## CREDITOS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
