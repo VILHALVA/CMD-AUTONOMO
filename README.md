@@ -87,7 +87,7 @@ Após abrir o aplicativo, utilize os seguintes recursos:
 * **Botão `PARAR`:** Interrompe a execução atual do script Python de forma segura.
 * **Botão `COPIAR`:** Copia toda a saída exibida na área de status para a área de transferência.
 * **Botão `LIMPAR`:** Limpa o campo de seleção de arquivo e a saída exibida, retornando a aplicação ao estado inicial.
-* **Switch `LOG OFF / LOG ON`:** Ao ser ativado, inicia o registro automático de toda a saída gerada durante a execução em um arquivo de log (`LOG_DATAHORA.txt`), criado automaticamente na pasta `LOG`.
+* **Switch `LOG OFF / LOG ON`:** Ao ser ativado, inicia o registro automático de toda a saída gerada durante a execução em um arquivo de log (`CMD AUTONOMO_DATAHORA.txt`), criado automaticamente na pasta `LOG`.
 
 4. **Campo de Seleção de Arquivo:**
 * Exibe o caminho do script Python escolhido.
