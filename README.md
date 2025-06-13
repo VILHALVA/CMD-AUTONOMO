@@ -5,29 +5,52 @@
 
 ## DESCRIÇÃO:
 ### GERAL:
-O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica utilizando a biblioteca Tkinter. Seu propósito principal é permitir que os usuários executem comandos e scripts Python de forma simples e intuitiva, diretamente de uma interface gráfica.
+**CMD AUTÔNOMO** é uma aplicação desenvolvida em Python com interface gráfica utilizando a biblioteca `customtkinter`. Seu objetivo é permitir a execução fácil e visual de scripts Python diretamente a partir de um ambiente gráfico, sem a necessidade de abrir o terminal.
 
 ### RECURSOS:
-1. **Campos de entrada "CAMINHO" e "ARQUIVO"**: Os usuários podem inserir o caminho do diretório onde o arquivo Python está localizado e o nome do arquivo a ser executado.
-2. **Botões de controle**: Os botões "INICIAR", "REINICIAR", "PARAR" e "LIMPAR" oferecem funcionalidades para iniciar, reiniciar, parar a execução do script Python e limpar os campos de entrada, respectivamente.
-3. **Status de execução**: Uma área de status exibe informações sobre o estado atual da execução do script, como "PARADO" ou "EM EXECUÇÃO!".
-4. **Salvamento automático de configurações**: As configurações de "CAMINHO" e "ARQUIVO" são automaticamente salvas em um arquivo JSON chamado "CONFIG.json" no mesmo diretório do código. Isso permite que as configurações sejam carregadas automaticamente na próxima execução do aplicativo.
-5. **Gerenciamento seguro de processos**: O aplicativo utiliza a biblioteca `psutil` para garantir o encerramento seguro do processo Python em execução.
+1. **Seleção de arquivos Python**: O usuário pode selecionar qualquer arquivo `.py` do sistema por meio de um botão que abre o explorador de arquivos.
+
+2. **Botões de controle**:
+   * **INICIAR**: Executa o script Python selecionado.
+   * **PARAR**: Interrompe a execução do script em andamento.
+   * **COPIAR**: Copia a saída gerada (stdout) para a área de transferência.
+   * **LIMPAR**: Limpa o campo de seleção de arquivo e a área de status.
+
+3. **Área de status**: Exibe a saída do script em tempo real, além de mensagens informativas, avisos e erros.
+
+4. **Log de execução (opcional)**: O usuário pode ativar um modo de log, que salva toda a saída gerada em um arquivo `.txt` com data e hora.
+
+5. **Gerenciamento seguro de processos**: Utiliza a biblioteca `psutil` para encerrar processos Python de forma segura, incluindo subprocessos filhos.
 
 ### COMPORTAMENTO DOS CAMPOS E BOTÕES:
-1. **Campos "CAMINHO" e "ARQUIVO"**:
-   - Os campos estão inicialmente vazios e habilitados para entrada.
-   - Quando ambos os campos estão preenchidos, o botão "INICIAR" é habilitado, permitindo ao usuário iniciar a execução do script.
-   - O botão "LIMPAR" é habilitado quando ambos os campos estão preenchidos, permitindo ao usuário limpar os campos de entrada.
+1. **Campo de seleção de arquivo**:
+   * Inicialmente desabilitado para edição direta e vazio.
+   * Habilita os botões "INICIAR" e "LIMPAR" após um arquivo válido ser selecionado.
+
 2. **Botões de controle**:
-   - O botão "INICIAR" inicia a execução do script Python, desabilitando os campos de entrada e habilitando os botões "REINICIAR" e "PARAR".
-   - O botão "REINICIAR" reinicia a execução do script Python, mantendo os campos de entrada inalterados.
-   - O botão "PARAR" interrompe a execução do script Python em andamento, habilitando novamente os campos de entrada e desabilitando os botões "REINICIAR" e "PARAR". Habilitando novamento o botão "LIMPAR".
+   * **INICIAR**:
+     * Inicia a execução do script.
+     * Desabilita o botão de seleção de arquivo.
+     * Habilita os botões "PARAR" e "COPIAR".
+   * **PARAR**:
+     * Interrompe a execução do script em andamento.
+     * Reabilita o botão de seleção de arquivo.
+     * Habilita os botões "INICIAR", "COPIAR" e "LIMPAR".
+   * **LIMPAR**:
+     * Limpa o campo de seleção de arquivo e a área de status.
+     * Desabilita todos os botões, exceto o de seleção de arquivo.
+   * **COPIAR**:
+     * Copia a saída da execução para a área de transferência.
+     * Exibe uma mensagem de confirmação temporária ("TEXTO COPIADO!").
+
+3. **Switch de LOG**:
+   * Ao ativar, inicia um novo arquivo de log na pasta atual, nomeado com a data e hora.
+   * Toda a saída posterior é salva automaticamente nesse arquivo.
+   * Pode ser desativado a qualquer momento.
 
 ## PORQUE CRIEI ESSE APP?
 - O aplicativo CMD AUTÔNOMO foi desenvolvido para simplificar a execução de bots Python diretamente pelo console, inspirado no conceito do "nodemon", eliminando a necessidade de reinicialização manual após modificações no código.
 - Foi criado com o objetivo de proporcionar uma maneira fácil e conveniente de executar comandos e scripts Python através de uma interface gráfica amigável.
-- Os usuários podem especificar o caminho do arquivo e o nome do script Python que desejam executar, com a opção de iniciar ou reiniciar a execução do script conforme necessário.
 
 ## OBSERVAÇÃO:
 1. **Limitações da Ferramenta**:
@@ -41,24 +64,36 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
    - Atualmente, o aplicativo suporta apenas a execução de scripts Python e não oferece suporte para outras linguagens de programação.
 
 ## COMO USAR O APLICATIVO?
-1. **Executando o Aplicativo:**
+1. **Instale as Dependências:**
+Antes de iniciar o aplicativo, é necessário instalar as bibliotecas utilizadas no projeto. No terminal, execute:
+
+```bash
+pip install -r requirements.txt
+```
+
+> 💡 O arquivo `requirements.txt` está localizado dentro da pasta `./CODIGO`.
+
+2. **Executando o Aplicativo:**
    Navegue até o diretório `./CODIGO` e execute o script com o comando:
 
    ```bash
    python CODIGO.py
    ```
 
-2. **Interface e Funcionalidades:**
-   Após abrir o aplicativo, utilize os seguintes recursos:
+3. **Interface e Funcionalidades:**
+Após abrir o aplicativo, utilize os seguintes recursos:
 
-   * **Botão `INICIAR`:** Inicia a execução do script Python especificado nos campos de entrada.
-   * **Botão `REINICIAR`:** Interrompe o script atual e o executa novamente. Use este botão sempre que fizer alterações no código.
-   * **Botão `PARAR`:** Encerra a execução do script sem reiniciá-lo.
-   * **Botão `LIMPAR`:** Limpa todos os campos de entrada, permitindo recomeçar rapidamente. Importante: esta ação **não afeta** os dados salvos no arquivo `CONFIG.json`.
+* **Botão `SELECIONAR`:** Abre o explorador de arquivos para escolher um script Python (`.py`) a ser executado.
+* **Botão `INICIAR`:** Inicia a execução do script selecionado. Esse botão só é ativado após um arquivo válido ser escolhido.
+* **Botão `PARAR`:** Interrompe a execução atual do script Python de forma segura.
+* **Botão `COPIAR`:** Copia toda a saída exibida na área de status para a área de transferência.
+* **Botão `LIMPAR`:** Limpa o campo de seleção de arquivo e a saída exibida, retornando a aplicação ao estado inicial.
+* **Switch `LOG OFF / LOG ON`:** Ao ativar, inicia o registro automático de toda a saída gerada durante a execução em um arquivo de log (`LOG_DATAHORA.txt`) criado na mesma pasta do aplicativo.
 
-3. **Campos de Entrada:**
-   * **Campo `CAMINHO`:** Informe o diretório onde está localizado o script Python.
-   * **Campo `ARQUIVO`:** Informe o nome do arquivo Python que será executado.
+4. **Campo de Seleção de Arquivo:**
+* Exibe o caminho do script Python escolhido.
+* Este campo é somente leitura e atualizado automaticamente após a seleção via o botão `SELECIONAR`.
+* A escolha de um arquivo válido ativa os botões "INICIAR" e "LIMPAR".
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO O INSTALADOR:
@@ -122,7 +157,7 @@ O CMD AUTÔNOMO é uma aplicação desenvolvida em Python e interface gráfica u
 ## NÃO SABE?
 - Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos e alguns subsídios:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
-* [CURSO DE TKINTER](https://github.com/VILHALVA/CURSO-DE-TKINTER)
+* [CURSO DE CUSTOMTKINTER](https://github.com/VILHALVA/CURSO-DE-CUSTOMTKINTER)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 * [DOCUMENTAÇÃO OFICIAL DO PYINSTALLER](https://pyinstaller.org/en/stable/)
 * [DOCUMENTAÇÃO OFICIAL DO INNO SETUP](http://www.jrsoftware.org/isinfo.php)

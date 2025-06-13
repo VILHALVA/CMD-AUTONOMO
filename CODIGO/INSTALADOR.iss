@@ -1,5 +1,5 @@
 #define MyAppName "CMD AUTONOMO"
-#define MyAppVersion "1.3"
+#define MyAppVersion "1.4"
 #define MyAppPublisher "My Company, Inc."
 #define Diretorio "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\CMD AUTONOMO\CODIGO"
 #define MyAppURL "https://www.example.com/"

@@ -1,157 +1,197 @@
-import tkinter as tk
+import customtkinter as ctk
+from tkinter import filedialog
 import subprocess
-from time import sleep
 import psutil
-import json
+import threading
 import os
+import datetime
 
 class App:
     def __init__(self, root):
         self.root = root
         self.root.title("CMD AUTÔNOMO")
-        
-        # Frames
-        self.frame_path = tk.Frame(self.root)
-        self.frame_path.pack(pady=5)
-        
-        self.frame_file = tk.Frame(self.root)
-        self.frame_file.pack(pady=5)
-        
-        self.frame_buttons = tk.Frame(self.root)
+        self.root.state("zoomed")
+
+        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("blue")
+
+        self.label_title = ctk.CTkLabel(root, text="CMD AUTÔNOMO", font=("Arial", 32, "bold"))
+        self.label_title.pack(pady=10)
+
+        self.entry_pasta = ctk.CTkEntry(root, width=600, placeholder_text="SELECIONE O ARQUIVO!", state="readonly")
+        self.entry_pasta.pack(pady=10)
+
+        self.btn_pasta = ctk.CTkButton(root, text="SELECIONAR", command=self.selecionar_pasta)
+        self.btn_pasta.pack(pady=10)
+
+        self.status_textbox = ctk.CTkTextbox(root, width=700, height=300, state="disabled")
+        self.status_textbox.pack(pady=10)
+
+        self.bottom_frame = ctk.CTkFrame(root)
+        self.bottom_frame.pack(pady=5)
+
+        self.log_switch = ctk.CTkSwitch(
+            self.bottom_frame, text="LOG OFF", command=self.toggle_log,
+            switch_width=40, switch_height=20, progress_color="red"
+        )
+        self.log_switch.pack(side="right", padx=20)
+
+        self.logging_enabled = False
+        self.log_file = None
+
+        self.frame_buttons = ctk.CTkFrame(root)
         self.frame_buttons.pack(pady=10)
-        
-        self.frame_status = tk.Frame(self.root)
-        self.frame_status.pack(pady=5)
-        
-        # Labels
-        tk.Label(self.frame_path, text="CAMINHO:").pack(side=tk.LEFT)
-        tk.Label(self.frame_file, text="ARQUIVO:").pack(side=tk.LEFT)
-        tk.Label(self.frame_status, text="STATUS:").pack(side=tk.LEFT)
-        
-        # Entries
-        self.entry_path = tk.Entry(self.frame_path, width=50)
-        self.entry_path.pack(side=tk.LEFT)
-        self.entry_path.bind("<KeyRelease>", self.check_fields) 
-        
-        self.entry_file = tk.Entry(self.frame_file, width=20)
-        self.entry_file.pack(side=tk.LEFT)
-        self.entry_file.bind("<KeyRelease>", self.check_fields)  
-        
-        # Status
-        self.status_var = tk.StringVar()
-        self.status_var.set("PARADO")
-        self.status_label = tk.Label(self.frame_status, textvariable=self.status_var)
-        self.status_label.pack(side=tk.LEFT)
-        
-        # Buttons
-        self.button_start = tk.Button(self.frame_buttons, text="INICIAR", command=self.start_execution)
-        self.button_start.pack(side=tk.LEFT, padx=5)
-        self.button_start.config(state="disabled")  
-        
-        self.button_restart = tk.Button(self.frame_buttons, text="REINICIAR", command=self.restart_execution)
-        self.button_restart.pack(side=tk.LEFT, padx=5)
-        self.button_restart.config(state="disabled")
-        
-        self.button_stop = tk.Button(self.frame_buttons, text="PARAR", command=self.stop_execution)
-        self.button_stop.pack(side=tk.LEFT, padx=5)
-        self.button_stop.config(state="disabled")  
-        
-        self.button_clear = tk.Button(self.frame_buttons, text="LIMPAR", command=self.clear_fields)
-        self.button_clear.pack(side=tk.LEFT, padx=5)
-        self.button_clear.config(state="disabled")  
-        
-        self.footer_label = tk.Label(root, text="APP CRIADO PELO VILHALVA\nGITHUB: @VILHALVA", bg="gray", fg="white", height=2)
-        self.footer_label.pack(side=tk.BOTTOM, fill=tk.X)        
-        self.root.state('zoomed')
-        
+
+        self.button_start = self.create_button("INICIAR", self.start_execution, "disabled")
+        self.button_stop = self.create_button("PARAR", self.stop_execution, "disabled")
+        self.button_copy = self.create_button("COPIAR", self.copy_to_clipboard, "disabled")
+        self.button_clear = self.create_button("LIMPAR", self.clear_fields, "disabled")
+
         self.process = None
-        
-        self.config_file = os.path.join(os.path.dirname(__file__), "CONFIG.json")
-        
-        self.load_config()
-        
-    def check_fields(self, event):
-        if self.entry_path.get() and self.entry_file.get():
-            self.button_start.config(state="active")
-            self.button_clear.config(state="active")  
+        self.file_path = ""
+
+    def create_button(self, text, command, state):
+        btn = ctk.CTkButton(self.frame_buttons, text=text, command=command, state=state)
+        btn.pack(side="left", padx=10)
+        return btn
+
+    def toggle_log(self):
+        self.logging_enabled = bool(self.log_switch.get())
+        if self.logging_enabled:
+            now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            self.log_file = os.path.join(os.getcwd(), f"LOG_{now}.txt")
+            self.log_switch.configure(text="LOG ON", progress_color="blue")
+            self.append_to_textbox(f"📁LOG INICIADO: {self.log_file}\n")
         else:
-            self.button_start.config(state="disabled")
-            self.button_clear.config(state="disabled")  
-    
-    def clear_fields(self):
-        self.entry_path.delete(0, tk.END)
-        self.entry_file.delete(0, tk.END)
-        self.check_fields(None)  
-        
+            self.log_switch.configure(text="LOG OFF", progress_color="red")
+            self.append_to_textbox("📁LOG DESATIVADO!\n")
+
+    def selecionar_pasta(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Python Files", "*.py")])
+        if file_path:
+            self.file_path = file_path
+            self.update_entry(self.entry_pasta, file_path)
+            self.set_buttons_state(start="normal", clear="normal")
+
     def start_execution(self):
-        path = self.entry_path.get()
-        file = self.entry_file.get()
-        
-        if not file.endswith(".py"):
-            file += ".py"
-        
-        cmd = f'cd /d {path} && python {file}'
+        if not self.file_path:
+            return
+        if self.process and self.process.poll() is None:
+            self.append_to_textbox("⚠️AVISO: O PROCESSO JÁ ESTÁ EM EXECUÇÃO!\n")
+            return
+
+        self.set_textbox_state("normal")
+        self.status_textbox.delete("1.0", "end")
+        self.set_textbox_state("disabled")
+
+        directory = os.path.dirname(self.file_path)
+        file = os.path.basename(self.file_path)
+        self.cmd = f'cd /d "{directory}" && python "{file}"'
+
+        self.append_to_textbox(f"🤖[COMANDO]: {self.cmd}\n")
 
         try:
-            self.process = subprocess.Popen(cmd, shell=True)
-            self.status_var.set("EM EXECUÇÃO!")
-            self.entry_path.config(state="disabled")
-            self.entry_file.config(state="disabled")
-            self.button_restart.config(state="active")
-            self.button_stop.config(state="active")
-            self.button_start.config(state="disabled")
-            self.button_clear.config(state="disabled")
-            
-            self.save_config()
-            
+            self.process = subprocess.Popen(
+                self.cmd, shell=True, stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT, text=True, bufsize=1,
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+            )
+            self.append_to_textbox("👉EM EXECUÇÃO!\n")
+            threading.Thread(target=self.read_output_thread, daemon=True).start()
+
+            self.btn_pasta.configure(state="disabled")
+            self.set_buttons_state(start="disabled", stop="normal", copy="normal", clear="disabled")
+
         except Exception as e:
-            self.status_var.set(f"ERRO: {e}")
-        
-    def restart_execution(self):
+            self.append_to_textbox(f"❌ERRO: {e}\n")
+
+    def read_output_thread(self):
         try:
-            self.status_var.set("REINICIANDO...")
-            self.root.update() 
-            sleep(1)
-            self.stop_execution()
-            self.start_execution()
+            for line in self.process.stdout:
+                if line:
+                    self.append_to_textbox(line)
         except Exception as e:
-            self.status_var.set(f"ERRO: {e}")
-            
+            self.append_to_textbox(f"❌[ERRO NA LEITURA]: {e}\n")
+        finally:
+            self.append_to_textbox("👉FINALIZADO!\n")
+            self.btn_pasta.configure(state="disabled")
+            self.set_buttons_state(start="normal", stop="disabled", copy="normal", clear="normal")
+
+    def append_to_textbox(self, text):
+        def append():
+            self.set_textbox_state("normal")
+            self.status_textbox.insert("end", text)
+            self.status_textbox.see("end")
+            self.set_textbox_state("disabled")
+
+            if self.logging_enabled and self.log_file:
+                try:
+                    with open(self.log_file, "a", encoding="utf-8") as f:
+                        f.write(text)
+                except Exception as e:
+                    print(f"Erro ao gravar no log: {e}")
+        self.root.after(0, append)
+
     def stop_execution(self):
         try:
-            if self.process is not None:
-                parent = psutil.Process(self.process.pid)
-                for child in parent.children(recursive=True):
+            if self.process:
+                proc = psutil.Process(self.process.pid)
+                for child in proc.children(recursive=True):
                     child.kill()
-                parent.kill()
-                self.status_var.set("PARADO")
-                self.entry_path.config(state="normal")
-                self.entry_file.config(state="normal")
-                self.button_restart.config(state="disabled")
-                self.button_stop.config(state="disabled")
-                self.button_start.config(state="active")
-                self.button_clear.config(state="active")
-        except Exception as e:
-            self.status_var.set(f"ERRO: {e}")
-            
-    def save_config(self):
-        config_data = {
-            "path": self.entry_path.get(),
-            "file": self.entry_file.get()
-        }
-        with open(self.config_file, "w") as f:
-            json.dump(config_data, f)
-            
-    def load_config(self):
-        try:
-            with open(self.config_file, "r") as f:
-                config_data = json.load(f)
-                self.entry_path.insert(0, config_data["path"])
-                self.entry_file.insert(0, config_data["file"])
-                self.check_fields(None)  
-        except FileNotFoundError:
-            pass  
+                proc.kill()
+                self.process.wait(timeout=5)
+                self.process = None
 
-root = tk.Tk()
-app = App(root)
-root.mainloop()
+                self.append_to_textbox(f"🤖[COMANDO PID]: {proc.pid}\n")
+                self.set_buttons_state(start="normal", stop="disabled", copy="normal", clear="normal")
+        except Exception as e:
+            self.append_to_textbox(f"❌ERRO: {e}\n")
+
+    def copy_to_clipboard(self):
+        self.set_textbox_state("normal")
+        content = self.status_textbox.get("1.0", "end-1c")
+        self.set_textbox_state("disabled")
+
+        if content.strip():
+            self.root.clipboard_clear()
+            self.root.clipboard_append(content)
+            self.root.update()
+            self.show_popup("TEXTO COPIADO!")
+
+    def show_popup(self, message):
+        popup = ctk.CTkLabel(self.root, text=message, text_color="white", bg_color="#333333", font=("Arial", 14, "bold"))
+        popup.place(relx=0.5, rely=0.05, anchor="n")
+        self.root.after(3000, popup.destroy)
+
+    def clear_fields(self):
+        self.update_entry(self.entry_pasta, "")
+        self.status_textbox.configure(state="normal")
+        self.status_textbox.delete("1.0", "end")
+        self.status_textbox.configure(state="disabled")
+        self.file_path = ""
+        self.btn_pasta.configure(state="normal")
+        self.set_buttons_state(start="disabled", stop="disabled", copy="disabled", clear="disabled")
+
+    def set_buttons_state(self, start=None, stop=None, copy=None, clear=None):
+        if start is not None:
+            self.button_start.configure(state=start)
+        if stop is not None:
+            self.button_stop.configure(state=stop)
+        if copy is not None:
+            self.button_copy.configure(state=copy)
+        if clear is not None:
+            self.button_clear.configure(state=clear)
+
+    def set_textbox_state(self, state):
+        self.status_textbox.configure(state=state)
+
+    def update_entry(self, entry, value):
+        entry.configure(state="normal")
+        entry.delete(0, "end")
+        entry.insert(0, value)
+        entry.configure(state="readonly")
+
+if __name__ == "__main__":
+    root = ctk.CTk()
+    app = App(root)
+    root.mainloop()
