@@ -32,7 +32,7 @@ class App:
 
         self.log_switch = ctk.CTkSwitch(
             self.bottom_frame, text="LOG OFF", command=self.toggle_log,
-            switch_width=40, switch_height=20, progress_color="red"
+            switch_width=40, switch_height=20
         )
         self.log_switch.pack(side="right", padx=20)
 
@@ -54,19 +54,6 @@ class App:
         btn = ctk.CTkButton(self.frame_buttons, text=text, command=command, state=state)
         btn.pack(side="left", padx=10)
         return btn
-
-    def toggle_log(self):
-        self.logging_enabled = bool(self.log_switch.get())
-        if self.logging_enabled:
-            now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            log_dir = os.path.join(os.getcwd(), "LOG")
-            os.makedirs(log_dir, exist_ok=True)  
-            self.log_file = os.path.join(log_dir, f"CMD AUTONOMO_{now}.txt")
-            self.log_switch.configure(text="LOG ON", progress_color="blue")
-            self.append_to_textbox(f"📁LOG INICIADO: {self.log_file}\n")
-        else:
-            self.log_switch.configure(text="LOG OFF", progress_color="red")
-            self.append_to_textbox("📁LOG DESATIVADO!\n")
 
     def selecionar_pasta(self):
         file_path = filedialog.askopenfilename(filetypes=[("Python Files", "*.py")])
@@ -174,6 +161,19 @@ class App:
         self.btn_pasta.configure(state="normal")
         self.set_buttons_state(start="disabled", stop="disabled", copy="disabled", clear="disabled")
 
+    def toggle_log(self):
+        self.logging_enabled = bool(self.log_switch.get())
+        if self.logging_enabled:
+            now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            log_dir = os.path.join(os.getcwd(), "LOG")
+            os.makedirs(log_dir, exist_ok=True)  
+            self.log_file = os.path.join(log_dir, f"CMD AUTONOMO_{now}.txt")
+            self.log_switch.configure(text="LOG ON")
+            self.append_to_textbox(f"📁LOG INICIADO: {self.log_file}\n")
+        else:
+            self.log_switch.configure(text="LOG OFF")
+            self.append_to_textbox("📁LOG DESATIVADO!\n")
+            
     def set_buttons_state(self, start=None, stop=None, copy=None, clear=None):
         if start is not None:
             self.button_start.configure(state=start)
