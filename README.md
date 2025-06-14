@@ -102,11 +102,11 @@ Após abrir o aplicativo, utilize os seguintes recursos:
 
    * **Você tem duas opções para evitar ou contornar esse alerta:**
 
-      1. **Adicionar uma exceção no antivírus:**
-         * Inclua o arquivo executável do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
+   1. **Adicionar uma exceção no antivírus:**
+      - Inclua o arquivo executável do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
 
-      2. **Executar diretamente o código-fonte (`CODIGO.py`):**
-         * Caso prefira uma abordagem mais transparente, você pode simplesmente **executar o script Python original** (`CODIGO.py`) utilizando um ambiente Python instalado na sua máquina. Essa abordagem permite verificar o código antes da execução, e **reduz drasticamente a chance de alertas**, pois o antivírus entende que você está executando um script legítimo de forma explícita.
+   2. **Executar diretamente o código-fonte (`CODIGO.py`):**
+      - Caso prefira uma abordagem mais transparente, você pode simplesmente **executar o script Python original** (`CODIGO.py`) utilizando um ambiente Python instalado na sua máquina. Essa abordagem permite verificar o código antes da execução, e **reduz drasticamente a chance de alertas**, pois o antivírus entende que você está executando um script legítimo de forma explícita.
 
 ### 2. GERANDO:
 > **IMPORTANTE:** Antes de gerar o novo `executável`, certifique-se de excluir o arquivo `./APP/CMD AUTONOMO.exe`.
