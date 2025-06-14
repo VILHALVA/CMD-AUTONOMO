@@ -168,7 +168,7 @@ class App:
             log_dir = os.path.join(os.getcwd(), "LOG")
             os.makedirs(log_dir, exist_ok=True)  
             self.log_file = os.path.join(log_dir, f"CMD AUTONOMO_{now}.txt")
-            self.log_switch.configure(text="LOG ON")
+            self.log_switch.configure(text="LOG ON", progress_color="blue")
             self.append_to_textbox(f"📁LOG INICIADO: {self.log_file}\n")
         else:
             self.log_switch.configure(text="LOG OFF")
