@@ -4,10 +4,9 @@
 <img src="FOTO.png" align="center" width="400"> <br>
 
 ## DESCRIÇÃO:
-### GERAL:
 **CMD AUTÔNOMO** é uma aplicação desenvolvida em Python com interface gráfica utilizando a biblioteca `customtkinter`. Seu objetivo é permitir a execução fácil e visual de scripts Python diretamente a partir de um ambiente gráfico, sem a necessidade de abrir o terminal.
 
-### RECURSOS:
+## RECURSOS:
 1. **Seleção de arquivos Python**: O usuário pode selecionar qualquer arquivo `.py` do sistema por meio de um botão que abre o explorador de arquivos.
 
 2. **Botões de controle**:
@@ -22,7 +21,7 @@
 
 5. **Gerenciamento seguro de processos**: Utiliza a biblioteca `psutil` para encerrar processos Python de forma segura, incluindo subprocessos filhos.
 
-### COMPORTAMENTO DOS CAMPOS E BOTÕES:
+## COMPORTAMENTO DOS CAMPOS E BOTÕES:
 1. **Campo de seleção de arquivo**:
    * Inicialmente desabilitado para edição direta e vazio.
    * Habilita os botões "INICIAR" e "LIMPAR" após um arquivo válido ser selecionado.
@@ -52,15 +51,16 @@
 - O aplicativo `CMD AUTÔNOMO` foi desenvolvido para simplificar a execução de bots Python diretamente pelo console, inspirado no conceito do "nodemon", eliminando a necessidade de reinicialização manual após modificações no código.
 
 ## OBSERVAÇÃO:
-1. **Limitações da Ferramenta**:
+1. **Limitações da Ferramenta:**
    - O CMD AUTÔNOMO não substitui um ambiente de desenvolvimento integrado (IDE) ou outras ferramentas mais avançadas para desenvolvimento e execução de código.
    - Não oferece suporte para a execução de comandos complexos do sistema operacional diretamente pelo aplicativo.
 
-2. **Requisitos de Instalação e Configuração**:
-   - Os usuários devem ter o Python instalado e configurado corretamente em seus sistemas para que o aplicativo funcione corretamente.
+2. **Requisitos de Instalação e Configuração:**
+   - É necessário que o **Python esteja instalado e corretamente configurado** no sistema para que o aplicativo funcione como esperado.
+   - Além disso, **todas as dependências do script que será executado devem estar previamente instaladas**. Isso inclui bibliotecas e pacotes utilizados no código Python que você pretende rodar por meio da aplicação.
 
-3. **Suporte de Linguagem**:
-   - Atualmente, o aplicativo suporta apenas a execução de scripts Python e não oferece suporte para outras linguagens de programação.
+3. **Suporte de Linguagem:**
+   - O aplicativo suporta apenas a execução de scripts Python e não oferece suporte para outras linguagens de programação.
 
 ## COMO USAR O APLICATIVO?
 1. **Instale as Dependências:**
@@ -96,10 +96,17 @@ Após abrir o aplicativo, utilize os seguintes recursos:
 
 ## SOBRE O EXECUTAVEL:
 ### 1. EXECUTANDO:
-   * O executável gerado está disponível apenas para sistemas **Windows x64** e pode ser encontrado no diretório `./APP`.
-   * Para executá-lo, basta dar dois cliques. Ele é especialmente útil em máquinas onde o **Python não está instalado**.
-   * Trata-se da **mesma aplicação contida no arquivo `./CODIGO/CODIGO.py`**, porém empacotada de forma independente.
-   * Se necessário, você pode recompilar o executável a qualquer momento.
+- O executável gerado está disponível apenas para sistemas **Windows x64** e pode ser encontrado no diretório `./APP`. Para executá-lo, basta dar dois cliques. O executável é bastante útil caso o Python não esteja instalado. Trata-se da mesma aplicação do arquivo `./CODIGO/CODIGO.py`. Se desejar, você pode recompilá-lo novamente.
+
+- Ao executar o **arquivo executável** deste aplicativo, **é possível que seu antivírus exiba um alerta de segurança**. Isso **não significa que o aplicativo é malicioso**, mas sim que o antivírus está reagindo ao comportamento comum de programas que executam comandos do sistema, como é o caso deste projeto.
+
+   * **Você tem duas opções para evitar ou contornar esse alerta:**
+
+      1. **Adicionar uma exceção no antivírus:**
+         * Inclua o arquivo executável do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
+
+      2. **Executar diretamente o código-fonte (`CODIGO.py`):**
+         * Caso prefira uma abordagem mais transparente, você pode simplesmente **executar o script Python original** (`CODIGO.py`) utilizando um ambiente Python instalado na sua máquina. Essa abordagem permite verificar o código antes da execução, e **reduz drasticamente a chance de alertas**, pois o antivírus entende que você está executando um script legítimo de forma explícita.
 
 ### 2. GERANDO:
 > **IMPORTANTE:** Antes de gerar o novo `executável`, certifique-se de excluir o arquivo `./APP/CMD AUTONOMO.exe`.
@@ -124,12 +131,10 @@ Após abrir o aplicativo, utilize os seguintes recursos:
    - Para executar o aplicativo, basta dar dois cliques no arquivo `.exe`.
 
 ## NÃO SABE?
-- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos e alguns subsídios:
+- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
 * [CURSO DE CUSTOMTKINTER](https://github.com/VILHALVA/CURSO-DE-CUSTOMTKINTER)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
-* [DOCUMENTAÇÃO OFICIAL DO PYINSTALLER](https://pyinstaller.org/en/stable/)
-* [DOCUMENTAÇÃO OFICIAL DO INNO SETUP](http://www.jrsoftware.org/isinfo.php)
 
 ## CREDITOS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
