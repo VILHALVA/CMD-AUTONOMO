@@ -10,7 +10,10 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("CMD AUTÔNOMO")
-        self.root.state("zoomed")
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        self.root.geometry(f"{screen_width}x{screen_height}+0+0")  
+        self.root.resizable(True, True)
 
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
