@@ -100,7 +100,7 @@ Após abrir o aplicativo, utilize os seguintes recursos:
 
 - Ao executar o **arquivo executável** deste aplicativo, **é possível que seu antivírus exiba um alerta de segurança**. Isso **não significa que o aplicativo é malicioso**, mas sim que o antivírus está reagindo ao comportamento comum de programas que executam comandos do sistema, como é o caso deste projeto.
 
-   * **Você tem duas opções para evitar ou contornar esse alerta:**
+   **Para lidar com isso, há 2 alternativas:**
 
    1. **Adicionar uma exceção no antivírus:**
       - Inclua o arquivo executável do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
