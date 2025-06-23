@@ -1,4 +1,4 @@
-# [ATUALIZAÇÕES:](./UPDADES.md#vers%C3%A3o-10---26022024)
+# [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---26022024)
 ## VERSÃO 1.3 - 13/06/2025:
 * ✅Interface agora desenvolvida com `CustomTkinter`, substituindo o uso do `Tkinter`.
 * ✅O aplicativo inicia automaticamente em tela maximizada.
