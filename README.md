@@ -136,7 +136,8 @@ Após abrir o aplicativo, utilize os seguintes recursos:
 * [CURSO DE CUSTOMTKINTER](https://github.com/VILHALVA/CURSO-DE-CUSTOMTKINTER)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 
-## CREDITOS:
+## CREDITOS E MAIS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
+- [CLIQUE AQUI PARA VER O HISTÓRICO DE ATUALIZAÇÕES](./UPDATES.md)
 
 
