@@ -27,5 +27,5 @@
 
 ## VERSÃO 1.0 - 26/02/2024:
 * **✅ O aplicativo foi desenvolvido utilizando `tkinter`:**
-    * Ele possui os botões `INICIAR`, `REINICIAR` e `PARAR`, posicionados abaixo dos campos de entrada: um para o caminho do script (`CAMINHO`) e outro para o nome do arquivo (`ARQUIVO`). Essas informações são armazenadas automaticamente em um arquivo `CONFIG.json`, localizado no mesmo diretório em que o aplicativo está sendo executado.
+    * Ele possui os botões `INICIAR`, `REINICIAR` e `PARAR`, posicionados abaixo dos campos de entrada: um para o caminho do script (`CAMINHO`) e outro para o nome do arquivo (`ARQUIVO`). 
     * Logo abaixo dos botões, é exibido o campo de `STATUS`, que pode mostrar as mensagens: **"PARADO"**, **"EM EXECUÇÃO!"** ou **"REINICIANDO..."**.
