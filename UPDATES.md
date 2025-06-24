@@ -20,7 +20,7 @@
 ## VERSÃO 1.1 - 15/03/2024:
 * ✅Agora, os campos "CAMINHO" e "ARQUIVO" são automaticamente salvos no arquivo "CONFIG.json" ao fechar o aplicativo, garantindo que as configurações sejam preservadas para sessões futuras.
 * ✅Introduzir o botão "LIMPAR", permitindo aos usuários limpar rapidamente os campos de entrada, facilitando a remoção de dados anteriores sem afetar as configurações salvas no "CONFIG.json".
-* ✅COMPORTAMENTO DOS CAMPOS E BOTÕES:
+* ✅**COMPORTAMENTO DOS CAMPOS E BOTÕES:**
     * 🔸**Campos "CAMINHO" e "ARQUIVO":** Iniciam vazios e ativam "INICIAR" quando preenchidos. "LIMPAR" habilita-se quando ambos estão preenchidos.
     * 🔸**Botões:** "INICIAR" ativa script e desabilita campos. "REINICIAR" e "PARAR" controlam execução. "LIMPAR" reativa-se após "PARAR".
 ---
