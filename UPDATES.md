@@ -26,6 +26,6 @@
 ---
 
 ## VERSÃO 1.0 - 26/02/2024:
-* ✅O aplicativo foi lançado para oferecer uma maneira fácil e conveniente de executar comandos e scripts Python a partir de uma interface gráfica amigável.
-* ✅Permite aos usuários especificar o caminho do arquivo e o nome do arquivo Python que desejam executar, oferecendo a opção de iniciar ou reiniciar a execução do script conforme necessário.
-* ✅Eu criei o aplicativo para facilitar a execução de bots Python diretamente pelo console, seguindo o conceito do "nodemon", evitando a necessidade de reinicialização manual após modificações no código.
+* **✅ O aplicativo foi desenvolvido utilizando `tkinter`:**
+    * Ele possui os botões `INICIAR`, `REINICIAR` e `PARAR`, posicionados abaixo dos campos de entrada: um para o caminho do script (`CAMINHO`) e outro para o nome do arquivo (`ARQUIVO`). Essas informações são armazenadas automaticamente em um arquivo `CONFIG.json`, localizado no mesmo diretório em que o aplicativo está sendo executado.
+    * Logo abaixo dos botões, é exibido o campo de `STATUS`, que pode mostrar as mensagens: **"PARADO"**, **"EM EXECUÇÃO!"** ou **"REINICIANDO..."**.
