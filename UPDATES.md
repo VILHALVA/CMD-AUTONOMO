@@ -21,11 +21,11 @@
 * ✅Agora, os campos "CAMINHO" e "ARQUIVO" são automaticamente salvos no arquivo "CONFIG.json" ao fechar o aplicativo, garantindo que as configurações sejam preservadas para sessões futuras.
 * ✅Introduzir o botão "LIMPAR", permitindo aos usuários limpar rapidamente os campos de entrada, facilitando a remoção de dados anteriores sem afetar as configurações salvas no "CONFIG.json".
 * ✅COMPORTAMENTO DOS CAMPOS E BOTÕES:
-    🔸Campos "CAMINHO" e "ARQUIVO" iniciam vazios e ativam "INICIAR" quando preenchidos. "LIMPAR" habilita-se quando ambos estão preenchidos.
-    🔸Botões: "INICIAR" ativa script e desabilita campos. "REINICIAR" e "PARAR" controlam execução. "LIMPAR" reativa-se após "PARAR".
+    * 🔸**Campos "CAMINHO" e "ARQUIVO":** Iniciam vazios e ativam "INICIAR" quando preenchidos. "LIMPAR" habilita-se quando ambos estão preenchidos.
+    * 🔸**Botões:** "INICIAR" ativa script e desabilita campos. "REINICIAR" e "PARAR" controlam execução. "LIMPAR" reativa-se após "PARAR".
 ---
 
 ## VERSÃO 1.0 - 26/02/2024:
-* 😃O aplicativo foi projetado para oferecer uma maneira fácil e conveniente de executar comandos e scripts Python a partir de uma interface gráfica amigável.
-* 👀Permite aos usuários especificar o caminho do arquivo e o nome do arquivo Python que desejam executar, oferecendo a opção de iniciar ou reiniciar a execução do script conforme necessário.
-* 😙Eu criei o aplicativo para facilitar a execução de bots Python diretamente pelo console, seguindo o conceito do "nodemon", evitando a necessidade de reinicialização manual após modificações no código.
+* ✅O aplicativo foi lançado para oferecer uma maneira fácil e conveniente de executar comandos e scripts Python a partir de uma interface gráfica amigável.
+* ✅Permite aos usuários especificar o caminho do arquivo e o nome do arquivo Python que desejam executar, oferecendo a opção de iniciar ou reiniciar a execução do script conforme necessário.
+* ✅Eu criei o aplicativo para facilitar a execução de bots Python diretamente pelo console, seguindo o conceito do "nodemon", evitando a necessidade de reinicialização manual após modificações no código.
