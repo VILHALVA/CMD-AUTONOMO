@@ -1,4 +1,5 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---26022024)
+
 ## VERSÃO 1.3 - 13/06/2025:
 * ✅Interface agora desenvolvida com `CustomTkinter`, substituindo o uso do `Tkinter`.
 * ✅O aplicativo inicia automaticamente em tela maximizada.
@@ -27,5 +28,7 @@
 
 ## VERSÃO 1.0 - 26/02/2024:
 * **✅ O aplicativo foi desenvolvido utilizando `tkinter`:**
-    * Ele possui os botões `INICIAR`, `REINICIAR` e `PARAR`, posicionados abaixo dos campos de entrada: um para o caminho do script (`CAMINHO`) e outro para o nome do arquivo (`ARQUIVO`). 
-    * Logo abaixo dos botões, é exibido o campo de `STATUS`, que pode mostrar as mensagens: **"PARADO"**, **"EM EXECUÇÃO!"** ou **"REINICIANDO..."**.
+    * 🔹Ele possui os botões `INICIAR`, `REINICIAR` e `PARAR`, posicionados abaixo dos campos de entrada: um para o caminho do script (`CAMINHO`) e outro para o nome do arquivo (`ARQUIVO`). 
+    * 🔹Logo abaixo dos botões, é exibido o campo de `STATUS`, que pode mostrar as mensagens: **"PARADO"**, **"EM EXECUÇÃO!"** ou **"REINICIANDO..."**.
+    * 🔹A seção do `footer` foi adicionada logo abaixo do campo de `STATUS`, exibindo o nome do criador e o username do GitHub.
+
