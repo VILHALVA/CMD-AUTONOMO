@@ -13,39 +13,42 @@
    * **INICIAR**: Executa o script Python selecionado.
    * **PARAR**: Interrompe a execução do script em andamento.
    * **COPIAR**: Copia a saída gerada (stdout) para a área de transferência.
-   * **LIMPAR**: Limpa o campo de seleção de arquivo e a área de status.
+   * **LIMPAR**: Limpa o campo de seleção de arquivo e a área de status, reseta o switch de **LOG** para OFF e desabilitado, e retorna a aplicação ao estado inicial.
 
 3. **Área de status**: Exibe a saída do script em tempo real, além de mensagens informativas, avisos e erros.
 
-4. **Log de execução (opcional)**: O usuário pode ativar um modo de log, que salva toda a saída gerada em um arquivo `LOG/CMD AUTONOMO.txt` com data e hora.
+4. **Log de execução (opcional)**: O usuário pode ativar o modo de log, que salva automaticamente toda a saída gerada em um arquivo `CMD AUTONOMO_DATA_HORA.txt` dentro do subdiretório **LOG** da pasta do arquivo selecionado. O sistema também cria ou atualiza o `.gitignore` para incluir a pasta `LOG`, evitando que os arquivos de log sejam versionados.
 
 5. **Gerenciamento seguro de processos**: Utiliza a biblioteca `psutil` para encerrar processos Python de forma segura, incluindo subprocessos filhos.
 
 ## COMPORTAMENTO DOS CAMPOS E BOTÕES:
 1. **Campo de seleção de arquivo**:
    * Inicialmente desabilitado para edição direta e vazio.
-   * Habilita os botões "INICIAR" e "LIMPAR" após um arquivo válido ser selecionado.
+   * Habilita os botões **INICIAR** e **LIMPAR**, além do **switch de LOG**, após a seleção de um arquivo válido.
 
 2. **Botões de controle**:
    * **INICIAR**:
      * Inicia a execução do script.
      * Desabilita o botão de seleção de arquivo.
-     * Habilita os botões "PARAR" e "COPIAR".
+     * Habilita os botões **PARAR** e **COPIAR**.
    * **PARAR**:
      * Interrompe a execução do script em andamento.
      * Reabilita o botão de seleção de arquivo.
-     * Habilita os botões "INICIAR", "COPIAR" e "LIMPAR".
+     * Habilita os botões **INICIAR**, **COPIAR** e **LIMPAR**.
    * **LIMPAR**:
      * Limpa o campo de seleção de arquivo e a área de status.
+     * Reseta o switch de **LOG** para OFF e desabilitado.
      * Desabilita todos os botões, exceto o de seleção de arquivo.
    * **COPIAR**:
      * Copia a saída da execução para a área de transferência.
-     * Exibe uma mensagem de confirmação temporária ("TEXTO COPIADO!").
+     * Exibe uma mensagem temporária de confirmação ("TEXTO COPIADO!").
 
 3. **Switch de LOG**:
-   * Ao ser ativado, o sistema gera um novo arquivo de log na pasta `LOG`, utilizando a data e hora como parte do nome do arquivo, garantindo registros organizados por sessão.
+   * Inicialmente desabilitado até que um arquivo seja selecionado.
+   * Ao ser ativado, cria um novo arquivo de log dentro do subdiretório **LOG** da pasta do arquivo selecionado, usando data e hora no nome para organizar os registros por sessão.
+   * Se o `.gitignore` não existir, é criado; caso exista mas não contenha `LOG`, a linha é adicionada ao final.
    * Toda a saída posterior é salva automaticamente nesse arquivo.
-   * Pode ser desativado a qualquer momento.
+   * Pode ser desativado a qualquer momento, voltando para a posição OFF e mantendo consistência visual.
 
 ## PORQUE CRIEI ESSE APP?
 - O aplicativo `CMD AUTÔNOMO` foi desenvolvido para simplificar a execução de bots Python diretamente pelo console, inspirado no conceito do "nodemon", eliminando a necessidade de reinicialização manual após modificações no código.
@@ -80,61 +83,93 @@ pip install -r requirements.txt
    ```
 
 3. **Interface e Funcionalidades:**
-Após abrir o aplicativo, utilize os seguintes recursos:
+   Após abrir o aplicativo, utilize os seguintes recursos:
 
-* **Botão `SELECIONAR`:** Abre o explorador de arquivos para escolher um script Python (`.py`) a ser executado.
-* **Botão `INICIAR`:** Inicia a execução do script selecionado. Esse botão só é ativado após um arquivo válido ser escolhido.
-* **Botão `PARAR`:** Interrompe a execução atual do script Python de forma segura.
-* **Botão `COPIAR`:** Copia toda a saída exibida na área de status para a área de transferência.
-* **Botão `LIMPAR`:** Limpa o campo de seleção de arquivo e a saída exibida, retornando a aplicação ao estado inicial.
-* **Switch `LOG OFF / LOG ON`:** Ao ser ativado, inicia o registro automático de toda a saída gerada durante a execução em um arquivo de log (`CMD AUTONOMO_DATA_HORA.txt`), criado automaticamente na pasta `LOG`.
+   * **Botão `SELECIONAR`:** Abre o explorador de arquivos para escolher um script Python (`.py`) a ser executado.
+   * **Botão `INICIAR`:** Inicia a execução do script selecionado. Só é ativado após a seleção de um arquivo válido.
+   * **Botão `PARAR`:** Interrompe a execução atual do script de forma segura.
+   * **Botão `COPIAR`:** Copia toda a saída exibida na área de status para a área de transferência, exibindo uma mensagem temporária de confirmação.
+   * **Botão `LIMPAR`:** Limpa o campo de seleção de arquivo e a área de saída, reseta o switch de **LOG** para OFF e desabilitado, retornando a aplicação ao estado inicial.
+   * **Switch `LOG OFF / LOG ON`:**
+
+   * Inicialmente desabilitado até que um arquivo seja selecionado.
+   * Ao ser ativado, inicia o registro automático de toda a saída em um arquivo de log (`CMD AUTONOMO_DATA_HORA.txt`), criado dentro do subdiretório **LOG** da pasta do arquivo selecionado.
+   * Cria ou atualiza o `.gitignore` para incluir a pasta `LOG`, evitando que os logs sejam versionados.
+   * Pode ser desativado a qualquer momento, voltando para OFF e mantendo consistência visual.
 
 4. **Campo de Seleção de Arquivo:**
-* Exibe o caminho do script Python escolhido.
-* Este campo é somente leitura e atualizado automaticamente após a seleção via o botão `SELECIONAR`.
-* A escolha de um arquivo válido ativa os botões "INICIAR" e "LIMPAR".
+   * Exibe o caminho do script Python escolhido.
+   * Este campo é somente leitura e atualizado automaticamente após a seleção via o botão `SELECIONAR`.
+   * A escolha de um arquivo válido ativa os botões "INICIAR" e "LIMPAR".
 
-## SOBRE O EXECUTAVEL:
-### 1. EXECUTANDO:
-- O executável gerado está disponível apenas para sistemas **Windows x64** e pode ser encontrado no diretório `./APP`. Para executá-lo, basta dar dois cliques. O executável é bastante útil caso o Python não esteja instalado. Trata-se da mesma aplicação do arquivo `./CODIGO/CODIGO.py`. Se desejar, você pode recompilá-lo novamente.
+## SOBRE O EXECUTAVEL E O INSTALADOR:
+### 1. EXECUTANDO O INSTALADOR:
+   - O instalador está localizado no diretório `./APP` e está disponível apenas para sistemas **Windows x64**. Para realizar a instalação, basta **dar dois cliques no arquivo** e seguir as instruções exibidas na tela.
 
-- Ao executar o **arquivo executável** deste aplicativo, **é possível que seu antivírus exiba um alerta de segurança**. Isso **não significa que o aplicativo é malicioso**, mas sim que o antivírus está reagindo ao comportamento comum de programas que executam comandos do sistema, como é o caso deste projeto.
+   - Ao executar o **instalador** deste aplicativo, **é possível que seu antivírus exiba um alerta de segurança**. Isso **não significa que o aplicativo é malicioso**, mas sim que o antivírus está reagindo ao comportamento comum de programas que executam comandos do sistema, como é o caso deste projeto.
 
    **Para lidar com isso, há 2 alternativas:**
 
    1. **Adicionar uma exceção no antivírus:**
-      - Inclua o arquivo executável do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
+      - Inclua o arquivo `instalador` do aplicativo na **lista de exclusões (exceções)** do seu antivírus. Esse procedimento pode variar conforme o antivírus utilizado, mas normalmente está disponível nas configurações de segurança, na seção de "Exclusões", "Ameaças permitidas" ou "Pastas confiáveis". Isso permitirá que o aplicativo rode normalmente sem gerar bloqueios ou alertas.
 
    2. **Executar diretamente o código-fonte (`CODIGO.py`):**
       - Caso prefira uma abordagem mais transparente, você pode simplesmente **executar o script Python original** (`CODIGO.py`) utilizando um ambiente Python instalado na sua máquina. Essa abordagem permite verificar o código antes da execução, e **reduz drasticamente a chance de alertas**, pois o antivírus entende que você está executando um script legítimo de forma explícita.
 
-### 2. GERANDO:
-> **IMPORTANTE:** Antes de gerar o novo `executável`, certifique-se de excluir o arquivo `./APP/CMD AUTONOMO.exe`.
+### 2. GERANDO O EXECUTAVEL:
+> **IMPORTANTE:** Antes de criar o instalador, é necessário gerar o arquivo `CMD AUTONOMO.exe`. Para isso, siga os passos abaixo:
 
-   **1. Instalação do [PyInstaller:](https://pyinstaller.org/en/stable/)**
-   - Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
+   **1. Instalação do PyInstaller:**
+   * Certifique-se de ter o PyInstaller instalado. Se não tiver, instale usando o comando abaixo:
    ```bash
    pip install pyinstaller
    ```
 
    **2. Gerando o Executável:**
-   - No diretório `./CODIGO`, execute o comando abaixo para gerar o executável a partir do arquivo `.spec`:
+   * No diretório `./CODIGO`, utilize o comando abaixo para gerar o executável:
 
    ```bash
    pyinstaller EXECUTAVEL.spec
    ```
 
-   - O arquivo `CMD AUTONOMO.exe` será criado dentro da pasta `./CODIGO/dist`.
+   * O executável `CMD AUTONOMO.exe` será criado na pasta `./CODIGO/dist`.
+   * Após a geração, você pode excluir a pasta `./CODIGO/build`.
 
-   - Após a geração, você pode mover o executável para `./APP` e remover as pastas temporárias `./CODIGO/build` e `./CODIGO/dist`.
+### 3. GERANDO O INSTALADOR:
+#### PASSO 1: BAIXAR E INSTALAR O INNO SETUP:
+1. **Download**: Baixe o Inno Setup do site oficial: [Inno Setup](http://www.jrsoftware.org/isdl.php).
+2. **Instalação**: Siga o assistente de instalação para instalar o Inno Setup no seu sistema.
 
-   - Para executar o aplicativo, basta dar dois cliques no arquivo `.exe`.
+#### PASSO 2: CRIAR O INSTALADOR:
+> **IMPORTANTE:** Antes de criar o novo instalador, certifique-se de excluir o arquivo `./APP/CMD AUTONOMO.exe`.
+
+1. **Editar o arquivo do instalador:**
+   * No diretório `./CODIGO`, abra o arquivo `INSTALADOR.iss` e atualize o seguinte trecho:
+
+   * Localize a diretiva `#define Diretorio` e substitua pelo caminho correto do diretório do projeto. Exemplo:
+
+     ```ini
+     #define Diretorio "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\CMD AUTONOMO\CODIGO"
+     ```
+
+2. **Gerar o instalador no Inno Setup:**
+   * Abra o arquivo `./CODIGO/INSTALADOR.iss` com o **Inno Setup**.
+   * Clique em **"Compile"** para gerar o instalador.
+
+3. **Limpar arquivos temporários:**
+   * Após a criação do instalador, você pode excluir o executável temporário `./CODIGO/dist/CMD AUTONOMO.exe`.
+
+4. **Instalando o Aplicativo:**
+   * Se o `Aplicativo` não iniciar automaticamente a instalação, você pode executar manualmente o arquivo `./APP/CMD AUTONOMO.exe` clicando duas vezes sobre ele.
+   * O assistente de instalação será iniciado e, por padrão, o aplicativo será instalado no seguinte caminho: `C:\Program Files\CMD AUTONOMO`.
 
 ## NÃO SABE?
-- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
+- Entendemos que para manipular arquivos em muitas linguagens e tecnologias, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos e alguns subsídios:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
 * [CURSO DE CUSTOMTKINTER](https://github.com/VILHALVA/CURSO-DE-CUSTOMTKINTER)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
+* [DOCUMENTAÇÃO OFICIAL DO PYINSTALLER](https://pyinstaller.org/en/stable/)
+* [DOCUMENTAÇÃO OFICIAL DO INNO SETUP](http://www.jrsoftware.org/isinfo.php)
 
 ## CREDITOS E MAIS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)

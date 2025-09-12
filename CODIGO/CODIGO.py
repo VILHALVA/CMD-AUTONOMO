@@ -38,6 +38,7 @@ class App:
             switch_width=40, switch_height=20
         )
         self.log_switch.pack(side="right", padx=20)
+        self.log_switch.configure(state="disabled")  
 
         self.logging_enabled = False
         self.log_file = None
@@ -64,6 +65,7 @@ class App:
             self.file_path = file_path
             self.update_entry(self.entry_pasta, file_path)
             self.set_buttons_state(start="normal", clear="normal")
+            self.log_switch.configure(state="normal")  
 
     def start_execution(self):
         if not self.file_path:
@@ -163,14 +165,34 @@ class App:
         self.file_path = ""
         self.btn_pasta.configure(state="normal")
         self.set_buttons_state(start="disabled", stop="disabled", copy="disabled", clear="disabled")
+        
+        self.logging_enabled = False
+        self.log_file = None
+        self.log_switch.deselect() 
+        self.log_switch.configure(state="disabled", text="LOG OFF", progress_color="transparent")
 
     def toggle_log(self):
         self.logging_enabled = bool(self.log_switch.get())
         if self.logging_enabled:
             now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            log_dir = os.path.join(os.getcwd(), "LOG")
-            os.makedirs(log_dir, exist_ok=True)  
+            
+            log_dir = os.path.join(os.path.dirname(self.file_path), "LOG")   
+            os.makedirs(log_dir, exist_ok=True)
             self.log_file = os.path.join(log_dir, f"CMD AUTONOMO_{now}.txt")
+            
+            gitignore_path = os.path.join(os.path.dirname(self.file_path), ".gitignore")
+            if not os.path.exists(gitignore_path):
+                with open(gitignore_path, "w", encoding="utf-8") as f:
+                    f.write("LOG\n")
+            else:
+                with open(gitignore_path, "r+", encoding="utf-8") as f:
+                    lines = f.read().splitlines()
+                    if "LOG" not in lines:
+                        f.seek(0, os.SEEK_END)  
+                        if lines and not lines[-1].endswith('\n'):
+                            f.write("\n")
+                        f.write("LOG\n")
+            
             self.log_switch.configure(text="LOG ON", progress_color="blue")
             self.append_to_textbox(f"📁LOG INICIADO: {self.log_file}\n")
         else:

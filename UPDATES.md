@@ -1,4 +1,20 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---26022024)
+## VERSÃO 1.4 - 12/09/2025:
+* ✅Agora o log é criado dentro de um **subdiretório `LOG`** na **mesma pasta do arquivo selecionado pelo usuário**, em vez de ser no diretório onde o aplicativo está rodando.
+* ✅**Botão de LOG desabilitado até a seleção do arquivo:**
+  * O switch inicia **desabilitado**.
+  * Só é habilitado após o usuário selecionar um arquivo usando o botão **SELECIONAR**.
+  * Ao clicar **LIMPAR**, o switch é novamente desabilitado e retorna para a posição OFF, evitando inconsistências.
+* ✅**Comportamento do botão LIMPAR:** Além de limpar o campo de arquivo e a textbox, o switch `LOG`:
+  * É **desligado (lado esquerdo / OFF)**.
+  * É **desabilitado** até que um novo arquivo seja selecionado.
+  * Mantém a cor consistente (`progress_color="transparent"`).
+* ✅**Atualização do `.gitignore` ao ativar o log pela primeira vez:**
+  * Se **não existir** um `.gitignore` na pasta do arquivo selecionado, ele é criado contendo a linha `LOG`.
+  * Se **existir**, mas não contiver a linha `LOG`, a linha é adicionada **ao final do arquivo**.
+* ✅Agora foi criado um **instalador** para o aplicativo (antes havia apenas o executável).
+---
+
 ## VERSÃO 1.3 - 13/06/2025:
 * ✅Interface agora desenvolvida com `CustomTkinter`, substituindo o uso do `Tkinter`.
 * ✅O aplicativo inicia automaticamente em tela maximizada.
