@@ -83,24 +83,18 @@ pip install -r requirements.txt
    ```
 
 3. **Interface e Funcionalidades:**
-   Após abrir o aplicativo, utilize os seguintes recursos:
-
-   * **Botão `SELECIONAR`:** Abre o explorador de arquivos para escolher um script Python (`.py`) a ser executado.
-   * **Botão `INICIAR`:** Inicia a execução do script selecionado. Só é ativado após a seleção de um arquivo válido.
-   * **Botão `PARAR`:** Interrompe a execução atual do script de forma segura.
-   * **Botão `COPIAR`:** Copia toda a saída exibida na área de status para a área de transferência, exibindo uma mensagem temporária de confirmação.
-   * **Botão `LIMPAR`:** Limpa o campo de seleção de arquivo e a área de saída, reseta o switch de **LOG** para OFF e desabilitado, retornando a aplicação ao estado inicial.
-   * **Switch `LOG OFF / LOG ON`:**
-
-   * Inicialmente desabilitado até que um arquivo seja selecionado.
-   * Ao ser ativado, inicia o registro automático de toda a saída em um arquivo de log (`CMD AUTONOMO_DATA_HORA.txt`), criado dentro do subdiretório **LOG** da pasta do arquivo selecionado.
-   * Cria ou atualiza o `.gitignore` para incluir a pasta `LOG`, evitando que os logs sejam versionados.
-   * Pode ser desativado a qualquer momento, voltando para OFF e mantendo consistência visual.
+   * Clique em **SELECIONAR** → escolha um script `.py`.
+   * Clique em **INICIAR** → execute o script escolhido (habilitado só após selecionar arquivo válido).
+   * Clique em **PARAR** → interrompa a execução em andamento.
+   * Clique em **COPIAR** → copie toda a saída exibida para a área de transferência (mensagem de confirmação aparece).
+   * Clique em **LIMPAR** → apague seleção, saída, desative LOG e volte ao estado inicial.
+   * Ative o **switch LOG** → grave saída em `LOG/CMD_AUTONOMO_DATA_HORA.txt`, crie/atualize `.gitignore` e evite versionamento.
+   * Desative o **switch LOG** → pare o registro mantendo consistência visual.
 
 4. **Campo de Seleção de Arquivo:**
-   * Exibe o caminho do script Python escolhido.
-   * Este campo é somente leitura e atualizado automaticamente após a seleção via o botão `SELECIONAR`.
-   * A escolha de um arquivo válido ativa os botões "INICIAR" e "LIMPAR".
+   * Exibe o caminho do script escolhido (somente leitura).
+   * Atualiza automaticamente após **SELECIONAR**.
+   * Ativa os botões **INICIAR** e **LIMPAR** ao escolher um arquivo válido.
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO O INSTALADOR:
